@@ -35,6 +35,7 @@ import {
   type ContactSubmission,
 } from "@/lib/booking-service"
 import type { User } from "firebase/auth"
+import { getCoursePurchases, type CoursePurchase } from "@/lib/course-service"
 
 export default function AdminDashboard() {
   const [user, setUser] = useState<User | null>(null)
@@ -43,6 +44,7 @@ export default function AdminDashboard() {
   const [password, setPassword] = useState("")
   const [bookings, setBookings] = useState<Booking[]>([])
   const [contacts, setContacts] = useState<ContactSubmission[]>([])
+  const [coursePurchases, setCoursePurchases] = useState<CoursePurchase[]>([])
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
   const [selectedContact, setSelectedContact] = useState<ContactSubmission | null>(null)
   const [statusFilter, setStatusFilter] = useState<string>("all")
@@ -73,19 +75,19 @@ export default function AdminDashboard() {
 
   const loadData = async () => {
     try {
-      const [bookingsData, contactsData] = await Promise.all([getBookings(), getContactSubmissions()])
+      const [bookingsData, contactsData, coursePurchasesData] = await Promise.all([
+        getBookings(),
+        getContactSubmissions(),
+        getCoursePurchases(),
+      ])
       setBookings(bookingsData)
       setContacts(contactsData)
+      setCoursePurchases(coursePurchasesData)
       setError("")
-    } catch (error: unknown) {
-  console.error("Error loading data:", error);
-
-  if (error instanceof Error) {
-    setError(error.message); // ✅ Safe to access .message now
-  } else {
-    setError("Failed to load data");
-  }
-}
+    } catch (error: any) {
+      console.error("Error loading data:", error)
+      setError(error.message || "Failed to load data")
+    }
   }
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -94,30 +96,18 @@ export default function AdminDashboard() {
 
     try {
       await signInAdmin(email, password)
-    } catch (error: unknown) {
-  console.error("Error loading data:", error);
-
-  if (error instanceof Error) {
-    setError(error.message); // ✅ Safe to access .message now
-  } else {
-    setError("Failed to load data");
-  }
-}
+    } catch (error: any) {
+      setError(error.message || "Authentication failed")
+    }
   }
 
   const handleSignOut = async () => {
     try {
       await signOutAdmin()
       setError("")
-    } catch (error: unknown) {
-  console.error("Error loading data:", error);
-
-  if (error instanceof Error) {
-    setError(error.message); // ✅ Safe to access .message now
-  } else {
-    setError("Failed to load data");
-  }
-}
+    } catch (error: any) {
+      setError(error.message || "Failed to sign out")
+    }
   }
 
   const handleUpdateBookingStatus = async (bookingId: string, status: Booking["status"]) => {
@@ -125,15 +115,9 @@ export default function AdminDashboard() {
       await updateBookingStatus(bookingId, status)
       await loadData()
       setError("")
-    } catch (error: unknown) {
-  console.error("Error loading data:", error);
-
-  if (error instanceof Error) {
-    setError(error.message); // ✅ Safe to access .message now
-  } else {
-    setError("Failed to load data");
-  }
-}
+    } catch (error: any) {
+      setError(error.message || "Failed to update booking status")
+    }
   }
 
   const handleUpdateContactStatus = async (contactId: string, status: ContactSubmission["status"]) => {
@@ -141,15 +125,9 @@ export default function AdminDashboard() {
       await updateContactStatus(contactId, status)
       await loadData()
       setError("")
-    } catch (error: unknown) {
-  console.error("Error loading data:", error);
-
-  if (error instanceof Error) {
-    setError(error.message); // ✅ Safe to access .message now
-  } else {
-    setError("Failed to load data");
-  }
-}
+    } catch (error: any) {
+      setError(error.message || "Failed to update contact status")
+    }
   }
 
   const getStatusBadge = (status: string) => {
@@ -386,6 +364,18 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center">
+                <BookOpen className="h-8 w-8 text-indigo-600" />
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-600">Course Purchases</p>
+                  <p className="text-2xl font-bold text-gray-900">{coursePurchases.length}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Main Content */}
@@ -394,6 +384,7 @@ export default function AdminDashboard() {
             <TabsList>
               <TabsTrigger value="bookings">Training Bookings</TabsTrigger>
               <TabsTrigger value="contacts">Contact Messages</TabsTrigger>
+              <TabsTrigger value="courses">Course Purchases</TabsTrigger>
             </TabsList>
 
             <div className="flex items-center gap-2">
@@ -566,6 +557,75 @@ export default function AdminDashboard() {
                             >
                               Close
                             </Button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="courses">
+            <Card>
+              <CardHeader>
+                <CardTitle>Course Purchases ({coursePurchases.length})</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {coursePurchases.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    <BookOpen className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+                    <p>No course purchases found</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {coursePurchases.map((purchase) => (
+                      <div key={purchase.id} className="border rounded-lg p-4 hover:bg-gray-50">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-4 mb-2">
+                              <h3 className="font-semibold text-lg">
+                                {purchase.firstName} {purchase.lastName}
+                              </h3>
+                              <Badge
+                                variant={
+                                  purchase.paymentStatus === "successful"
+                                    ? "default"
+                                    : purchase.paymentStatus === "pending"
+                                      ? "secondary"
+                                      : "destructive"
+                                }
+                              >
+                                {purchase.paymentStatus}
+                              </Badge>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                              <div className="flex items-center gap-2">
+                                <Mail className="h-4 w-4" />
+                                {purchase.email}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Phone className="h-4 w-4" />
+                                {purchase.phone}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Building className="h-4 w-4" />
+                                {purchase.company}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <BookOpen className="h-4 w-4" />
+                                {purchase.courseName}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium">₦{purchase.coursePrice.toLocaleString()}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Calendar className="h-4 w-4" />
+                                {purchase.createdAt?.toDate?.()?.toLocaleDateString() || "N/A"}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createContactSubmission } from "@/lib/booking-service"
-import { sendEmail, generateContactConfirmationEmail } from "@/lib/email-service"
+import { sendEmail } from "@/lib/sendEmail"
+import { generateCoursePaymentConfirmationEmail } from "@/lib/email-service"
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,7 +12,7 @@ export async function POST(request: NextRequest) {
     const submission = await createContactSubmission(contactData)
 
     // Send confirmation email to user
-    const emailContent = generateContactConfirmationEmail(contactData)
+    const emailContent = generateCoursePaymentConfirmationEmail(contactData)
     await sendEmail({
       to: contactData.email,
       subject: "Message Received - Dotland Consulting",
@@ -33,7 +35,7 @@ export async function POST(request: NextRequest) {
           ${contactData.message}
         </p>
         <p><strong>Submission ID:</strong> ${submission.id}</p>
-      `,
+      `, text:`contact details`
     })
 
     return NextResponse.json({

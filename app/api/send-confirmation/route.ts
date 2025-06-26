@@ -26,18 +26,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: "Failed to send confirmation email" }, { status: 500 })
   }
 }
-type ContactFormData = {
-  name: string;
-  message: string;
-  firstName:string;
-  lastName:string;
-  course:string;
-  preferredDate:string;
-  trainingType:string;
-  // add more fields if needed
-};
 
-function generateConfirmationEmail(formType: string, data: ContactFormData) {
+function generateConfirmationEmail(formType: string, data: Record<string, any>) {
   if (formType === "contact") {
     return {
       subject: "Thank you for contacting Dotland Consulting",

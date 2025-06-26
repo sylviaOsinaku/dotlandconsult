@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, X, Calendar, ArrowRight} from "lucide-react"
+import { CheckCircle, X, Calendar, Mail, Phone, ArrowRight, Clock } from "lucide-react"
 
 interface SuccessModalProps {
   isOpen: boolean

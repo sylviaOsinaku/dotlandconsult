@@ -242,7 +242,7 @@ export default function TestimonialsPage() {
                   <div className="p-6">
                     <h3 className="font-semibold mb-2">Success Story {video}</h3>
                     <p className="text-gray-600 text-sm">
-                      Watch how our training transformed this professional&apos;s career
+                      Watch how our training transformed this professional's career
                     </p>
                     <Button variant="link" className="text-blue-600 p-0 mt-2">
                       Watch Video
@@ -267,7 +267,7 @@ export default function TestimonialsPage() {
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
               <Link href="/training-schedule">Start Your Journey</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-blue-600">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
               <Link href="/courses">Explore Courses</Link>
             </Button>
           </div>

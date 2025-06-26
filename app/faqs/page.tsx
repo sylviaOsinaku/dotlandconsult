@@ -192,7 +192,7 @@ export default function FAQsPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-8">
-                  Can&apos;t find the answer you&apos;re looking for? Our team is here to help you with any questions about our
+                  Can't find the answer you're looking for? Our team is here to help you with any questions about our
                   training programs.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

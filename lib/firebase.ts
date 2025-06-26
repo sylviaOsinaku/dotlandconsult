@@ -1,33 +1,38 @@
 import { initializeApp, getApps } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
-
+//jbskcbhs
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-}
+  apiKey: "AIzaSyB1yzr4AqkMSc-NPETbLlspblkylHVsIz4",
+  authDomain: "dotlandconsult.firebaseapp.com",
+  projectId: "dotlandconsult",
+  storageBucket: "dotlandconsult.firebasestorage.app",
+  messagingSenderId: "890131592401",
+  appId: "1:890131592401:web:70c48fd7a7c5bc4c1741f0",
+  measurementId: "G-EREB79MWTV"
+};
+
+
 
 // Validate Firebase configuration
 function validateFirebaseConfig() {
-  const requiredKeys = [
-    "NEXT_PUBLIC_FIREBASE_API_KEY",
-    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
-    "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
-    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
-    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
-    "NEXT_PUBLIC_FIREBASE_APP_ID",
-  ]
+  // const requiredKeys = [
+  //   "NEXT_PUBLIC_FIREBASE_API_KEY",
+  //   "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+  //   "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+  //   "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+  //   "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+  //   "NEXT_PUBLIC_FIREBASE_APP_ID",
+  //   "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID",
+  // ]
 
-  const missingKeys = requiredKeys.filter((key) => !process.env[key])
+//   const missingKeys = requiredKeys.filter((key) => !process.env[key])
+// console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY)
 
-  if (missingKeys.length > 0) {
-    console.error("Missing Firebase environment variables:", missingKeys)
-    return false
-  }
+  // if (missingKeys.length > 0) {
+  //   console.error("Missing Firebase environment variables:", missingKeys)
+  //   return false
+  // }
 
   return true
 }

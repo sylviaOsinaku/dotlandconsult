@@ -16,17 +16,25 @@ export function Footer() {
               excellence.
             </p>
             <div className="flex space-x-4">
-              <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2">
-                <Facebook className="h-4 w-4" />
+              <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2" asChild>
+                <Link
+                  href="https://www.instagram.com/dotlandconsulting/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram className="h-4 w-4" />
+                </Link>
               </Button>
-              <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2">
-                <Twitter className="h-4 w-4" />
+              <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2" asChild>
+                <Link href="https://x.com/DotlandC" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="h-4 w-4" />
+                </Link>
               </Button>
               <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2">
                 <Linkedin className="h-4 w-4" />
               </Button>
               <Button size="sm" variant="ghost" className="text-gray-300 hover:text-white p-2">
-                <Instagram className="h-4 w-4" />
+                <Facebook className="h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -37,6 +45,9 @@ export function Footer() {
             <div className="space-y-2">
               <Link href="/about" className="block text-gray-300 hover:text-white text-sm">
                 About Us
+              </Link>
+              <Link href="/team" className="block text-gray-300 hover:text-white text-sm">
+                Meet the Team
               </Link>
               <Link href="/courses" className="block text-gray-300 hover:text-white text-sm">
                 Training Programs

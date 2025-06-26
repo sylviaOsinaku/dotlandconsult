@@ -9,32 +9,25 @@ export async function signInAdmin(email: string, password: string) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
     return userCredential.user
-  } 
- catch (error: unknown) {
-  console.error("Admin sign in error:", error);
+  } catch (error: any) {
+    console.error("Admin sign in error:", error)
 
-  if (typeof error === "object" && error !== null && "code" in error) {
-    const firebaseError = error as { code: string };
-
-    switch (firebaseError.code) {
+    // Handle specific Firebase auth errors
+    switch (error.code) {
       case "auth/invalid-api-key":
-        throw new Error("Firebase configuration error. Please check your API key.");
+        throw new Error("Firebase configuration error. Please check your API key.")
       case "auth/user-not-found":
-        throw new Error("No admin account found with this email.");
+        throw new Error("No admin account found with this email.")
       case "auth/wrong-password":
-        throw new Error("Incorrect password.");
+        throw new Error("Incorrect password.")
       case "auth/invalid-email":
-        throw new Error("Invalid email address.");
+        throw new Error("Invalid email address.")
       case "auth/too-many-requests":
-        throw new Error("Too many attempts. Please try again later.");
+        throw new Error("Too many failed attempts. Please try again later.")
       default:
-        throw new Error("An unknown error occurred during admin sign in.");
+        throw new Error("Authentication failed. Please try again.")
     }
-  } else {
-    throw new Error("An unexpected error occurred.");
   }
-}
-
 }
 
 export async function signOutAdmin() {

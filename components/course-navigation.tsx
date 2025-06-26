@@ -9,13 +9,19 @@ interface CourseNavigationProps {
     id: string
     label: string
   }>
+  currentCourse?: string // optional prop
 }
 
-export function CourseNavigation({ sections }: CourseNavigationProps) {
+export function CourseNavigation({ sections = [], currentCourse }: CourseNavigationProps) {
   const [activeSection, setActiveSection] = useState("")
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    // Early return if no sections provided
+    if (!sections || sections.length === 0) {
+      return
+    }
+
     const handleScroll = () => {
       // Check if we've scrolled past the hero section
       const heroSection = document.getElementById("hero")
@@ -60,7 +66,8 @@ export function CourseNavigation({ sections }: CourseNavigationProps) {
     }
   }
 
-  if (!isVisible) return null
+  // Don't render if no sections or not visible
+  if (!isVisible || !sections || sections.length === 0) return null
 
   return (
     <nav className="fixed top-16 left-0 right-0 z-40 bg-white/95 border-b border-gray-200 shadow-sm">

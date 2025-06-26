@@ -1,3 +1,4 @@
+// Fallback storage system when Firebase is not available
 export interface FallbackBooking {
   id: string
   firstName: string

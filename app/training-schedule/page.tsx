@@ -105,7 +105,7 @@ export default function TrainingSchedulePage() {
                 <CardHeader>
                   <CardTitle className="text-2xl text-blue-900">Training Booking Form</CardTitle>
                   <CardDescription>
-                    Fill out the form below to schedule your training session. We&apos;ll contact you within 24 hours to
+                    Fill out the form below to schedule your training session. We'll contact you within 24 hours to
                     confirm your booking.
                   </CardDescription>
                 </CardHeader>
@@ -364,7 +364,7 @@ export default function TrainingSchedulePage() {
                       <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                         1
                       </span>
-                      <span>We&apos;ll review your booking request</span>
+                      <span>We'll review your booking request</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -376,13 +376,13 @@ export default function TrainingSchedulePage() {
                       <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                         3
                       </span>
-                      <span>We&apos;ll confirm dates and send payment details</span>
+                      <span>We'll confirm dates and send payment details</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                         4
                       </span>
-                      <span>You&apos;ll receive pre-course materials</span>
+                      <span>You'll receive pre-course materials</span>
                     </div>
                   </div>
                 </CardContent>

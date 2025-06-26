@@ -1,5 +1,10 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import dotlnHomePic1 from "../components/assests/homepic1.jpg"
+import dotInHomePic2 from "../components/assests/dotmanager.jpg"
+import dotlandLogo from '../components/assests/DOTLAND LOGO jpg (1)PNG - Obidike Christopher (1).png'
 import { Badge } from "@/components/ui/badge"
 import {
   ArrowRight,
@@ -16,10 +21,42 @@ import {
   Shield,
   Briefcase,
   Quote,
+  Download,
 } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
 
 export default function HomePage() {
+  const handleBrochureDownload = (courseId: string, courseName: string) => {
+    // Create a simple text-based brochure content
+    const brochureContent = `
+DOTLAND CONSULTING LIMITED
+Professional Training Programs
+
+Course: ${courseName}
+
+For detailed course information, pricing, and schedules, please contact us:
+
+Phone: 07025560034 | 07084659907
+Email: support@dotlandconsulting.com
+Address: The Bunker, 279 Herbert Macaulay Way, Yaba, Lagos
+
+Visit our website: www.dotlandconsulting.com
+
+© 2024 Dotland Consulting Limited. All rights reserved.
+    `
+
+    const blob = new Blob([brochureContent], { type: "text/plain" })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `${courseId}-brochure.txt`
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
+    document.body.removeChild(a)
+  }
+
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
@@ -52,7 +89,7 @@ export default function HomePage() {
                   variant="outline"
                   className="border-white text-black hover:bg-white hover:text-blue-900 px-8 py-3 transform hover:scale-105 transition-all duration-300"
                 >
-                  <Link href="/training-schedule"  >Book Training Session</Link>
+                  <Link href="/training-schedule">Book Training Session</Link>
                 </Button>
               </div>
             </div>
@@ -62,33 +99,33 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="transform hover:scale-105 transition-all duration-500 animate-float">
-                    <img
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={dotlnHomePic1}
                       alt="Business meeting"
-                      className="w-full h-32 object-cover rounded-xl shadow-lg"
+                      className="w-full h-35 object-cover rounded-xl shadow-lg"
                     />
                   </div>
                   <div className="transform hover:scale-105 transition-all duration-500 animate-float delay-200">
-                    <img
-                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={dotInHomePic2}
                       alt="Team collaboration"
-                      className="w-full h-32 object-cover rounded-xl shadow-lg"
+                      className="w-full h-35 object-cover rounded-xl shadow-lg"
                     />
                   </div>
                 </div>
                 <div className="space-y-4 mt-8">
                   <div className="transform hover:scale-105 transition-all duration-500 animate-float delay-300">
-                    <img
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={dotlandLogo}
                       alt="Business analysis"
-                      className="w-full h-32 object-cover rounded-xl shadow-lg"
+                      className="w-full h-35 object-cove rounded-xl shadow-lg"
                     />
                   </div>
                   <div className="transform hover:scale-105 transition-all duration-500 animate-float delay-500">
                     <img
                       src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                       alt="Training session"
-                      className="w-full h-32 object-cover rounded-xl shadow-lg"
+                      className="w-full h-35 object-cover rounded-xl shadow-lg"
                     />
                   </div>
                 </div>
@@ -152,124 +189,696 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Popular & Path Courses */}
+      {/* Our Training Courses */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popular & Path Courses</h2>
-            <p className="text-xl text-gray-600">Choose your career path with our specialized training programs</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Training Courses</h2>
+            <p className="text-xl text-gray-600">Professional certification courses across multiple disciplines</p>
           </div>
 
           {/* Course Categories */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            {/* Management Path */}
-            <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-100">
-              <CardHeader className="text-center">
+          <div className="space-y-16">
+            {/* Project Management Courses */}
+            <div className="animate-fade-in-up delay-100">
+              <div className="text-center mb-8">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Briefcase className="h-8 w-8 text-blue-600" />
                 </div>
-                <CardTitle className="text-blue-900">Management Path</CardTitle>
-                <CardDescription>Leadership and strategic management courses</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
-                  <Link
-                    href="/courses/pmp"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Project Management (PMP)</span>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/courses/leadership"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Strategic Leadership</span>
-                    </div>
-                  </Link>
-                </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                  <Link href="/courses?category=management">View All Management Courses</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">Project Management</h3>
+                <p className="text-gray-600">Master project leadership and delivery methodologies</p>
+              </div>
 
-            {/* Analysis Path */}
-            <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-200">
-              <CardHeader className="text-center">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* PMP Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="PMP Certification Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦200,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Project Management Professional (PMP)</CardTitle>
+                    <CardDescription>Globally recognized PMI certification for project managers</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Master PMI's PMP Exam Content Outline</p>
+                      <p>• Apply Predictive, Agile, and Hybrid methodologies</p>
+                      <p>• 5-6 Days (30-40 Hours) Flexible</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/pmp">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("pmp", "Project Management Professional (PMP)")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* PRINCE2 Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="PRINCE2 Certification Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦220,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">PRINCE2® Certification</CardTitle>
+                    <CardDescription>Structured project management methodology</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Foundation & Practitioner levels</p>
+                      <p>• Globally recognized methodology</p>
+                      <p>• Scalable approach for any project</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/prince2">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("prince2", "PRINCE2 Certification")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Scrum Master Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Professional Scrum Master Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦150,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Professional Scrum Master (PSM)</CardTitle>
+                    <CardDescription>Master Agile and Scrum methodologies</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Scrum.org certified training</p>
+                      <p>• Agile team facilitation</p>
+                      <p>• Lifetime valid certification</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/scrum-master">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("scrum-master", "Professional Scrum Master (PSM)")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* PMI-ACP Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="PMI-ACP Certification Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦200,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">PMI-Agile Certified Practitioner</CardTitle>
+                    <CardDescription>PMI's Agile certification covering multiple frameworks</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Covers Scrum, Kanban, Lean, XP, SAFe</p>
+                      <p>• PMI globally recognized</p>
+                      <p>• 3-year validity with PDUs</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/pmi-acp">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("pmi-acp", "PMI-Agile Certified Practitioner")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Program Management Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Program Management Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦250,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Program Management</CardTitle>
+                    <CardDescription>Strategic leadership for multiple projects</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• PgMP certification preparation</p>
+                      <p>• Strategic program alignment</p>
+                      <p>• 3-5 Days flexible delivery</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/program-management">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("program-management", "Program Management")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Primavera P6 Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Primavera P6 Software Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-blue-600 text-white">₦200,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Primavera P6 Software</CardTitle>
+                    <CardDescription>Advanced project scheduling and control</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Oracle Primavera P6 mastery</p>
+                      <p>• Resource management & leveling</p>
+                      <p>• 3-4 Days hands-on training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Link href="/courses/primavera-p6">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        onClick={() => handleBrochureDownload("primavera-p6", "Primavera P6 Software")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Process Management Courses */}
+            <div className="animate-fade-in-up delay-200">
+              <div className="text-center mb-8">
                 <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <TrendingUp className="h-8 w-8 text-red-600" />
                 </div>
-                <CardTitle className="text-blue-900">Analysis Path</CardTitle>
-                <CardDescription>Business and data analysis specializations</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
-                  <Link
-                    href="/courses/business-analysis"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-red-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Business Analysis</span>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/courses/agile-scrum"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-red-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Agile & Scrum</span>
-                    </div>
-                  </Link>
-                </div>
-                <Button className="w-full bg-red-600 hover:bg-red-700">
-                  <Link href="/courses?category=analysis">View All Analysis Courses</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">Process Management</h3>
+                <p className="text-gray-600">Optimize business processes and operations</p>
+              </div>
 
-            {/* Quality & Risk Path */}
-            <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-300">
-              <CardHeader className="text-center">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Business Analysis Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Business Analysis Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-red-600 text-white">₦200,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Business Analysis</CardTitle>
+                    <CardDescription>IIBA BABOK v3 aligned certification</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• ECBA, CCBA, CBAP preparation</p>
+                      <p>• Requirements analysis & modeling</p>
+                      <p>• 5 Days comprehensive training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-red-600 hover:bg-red-700">
+                        <Link href="/courses/business-analysis">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-red-600 text-red-600 hover:bg-red-50"
+                        onClick={() => handleBrochureDownload("business-analysis", "Business Analysis")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Risk Management Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Professional Risk Management Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-red-600 text-white">₦150,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Professional Risk Management</CardTitle>
+                    <CardDescription>Enterprise risk management and mitigation</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• ISO 31000 & COSO frameworks</p>
+                      <p>• Risk assessment & analysis</p>
+                      <p>• Crisis & incident management</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-red-600 hover:bg-red-700">
+                        <Link href="/courses/risk-management">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-red-600 text-red-600 hover:bg-red-50"
+                        onClick={() => handleBrochureDownload("risk-management", "Professional Risk Management")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Operations & Facility Management */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Operations and Facility Management"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-red-600 text-white">₦180,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Operations & Facility Management</CardTitle>
+                    <CardDescription>Strategic facility and operations optimization</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• ISO 41001 & IFMA standards</p>
+                      <p>• Maintenance & safety management</p>
+                      <p>• 4 Days practical training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-red-600 hover:bg-red-700">
+                        <Link href="/courses/operations-facility">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-red-600 text-red-600 hover:bg-red-50"
+                        onClick={() =>
+                          handleBrochureDownload("operations-facility", "Operations & Facility Management")
+                        }
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* People Management Courses */}
+            <div className="animate-fade-in-up delay-300">
+              <div className="text-center mb-8">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8 text-green-600" />
+                  <Users className="h-8 w-8 text-green-600" />
                 </div>
-                <CardTitle className="text-blue-900">Quality & Risk Path</CardTitle>
-                <CardDescription>Risk management and quality assurance</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
-                  <Link
-                    href="/courses/risk-management"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Risk Management</span>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">People Management</h3>
+                <p className="text-gray-600">Build strong customer and employee relationships</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* CRM Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Customer Relationship Management Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-green-600 text-white">₦100,000</Badge>
                     </div>
-                  </Link>
-                  <Link
-                    href="/courses/quality-management"
-                    className="block p-3 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Quality Management</span>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Customer Relationship Management</CardTitle>
+                    <CardDescription>Build lasting customer relationships</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• CRM tools & strategies</p>
+                      <p>• Customer engagement & retention</p>
+                      <p>• Sales & marketing automation</p>
                     </div>
-                  </Link>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-green-600 hover:bg-green-700">
+                        <Link href="/courses/crm">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-green-600 text-green-600 hover:bg-green-50"
+                        onClick={() => handleBrochureDownload("crm", "Customer Relationship Management")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Supply Chain Management */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Logistics and Supply Chain Management"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-green-600 text-white">₦300,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Logistics & Supply Chain Management</CardTitle>
+                    <CardDescription>Optimize supply chain operations</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• End-to-end supply chain optimization</p>
+                      <p>• Procurement & inventory management</p>
+                      <p>• Technology & digital transformation</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-green-600 hover:bg-green-700">
+                        <Link href="/courses/supply-chain">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-green-600 text-green-600 hover:bg-green-50"
+                        onClick={() => handleBrochureDownload("supply-chain", "Logistics & Supply Chain Management")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* IT Courses */}
+            <div className="animate-fade-in-up delay-400">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="h-8 w-8 text-purple-600" />
                 </div>
-                <Button className="w-full bg-green-600 hover:bg-green-700">
-                  <Link href="/courses?category=quality-risk">View All Quality Courses</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">IT Courses</h3>
+                <p className="text-gray-600">Technology and data analysis expertise</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Data Analysis Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Data Analysis Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-purple-600 text-white">₦180,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Data Analysis</CardTitle>
+                    <CardDescription>Transform data into actionable insights</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Excel, Python, SQL, Power BI</p>
+                      <p>• Statistical analysis & visualization</p>
+                      <p>• 3-4 Days hands-on training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-purple-600 hover:bg-purple-700">
+                        <Link href="/courses/data-analysis">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-purple-600 text-purple-600 hover:bg-purple-50"
+                        onClick={() => handleBrochureDownload("data-analysis", "Data Analysis")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* MS Project Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Microsoft Project Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-purple-600 text-white">₦180,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Microsoft Project</CardTitle>
+                    <CardDescription>Project planning and scheduling mastery</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Project planning & resource management</p>
+                      <p>• Tracking & performance analysis</p>
+                      <p>• 4 Days comprehensive training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-purple-600 hover:bg-purple-700">
+                        <Link href="/courses/ms-project">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-purple-600 text-purple-600 hover:bg-purple-50"
+                        onClick={() => handleBrochureDownload("ms-project", "Microsoft Project")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* HSE Courses */}
+            <div className="animate-fade-in-up delay-500">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">Health, Safety & Environment</h3>
+                <p className="text-gray-600">Safety and emergency response training</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* First Aid & CPR Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="First Aid and CPR Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-orange-600 text-white">₦80,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">First Aid and CPR</CardTitle>
+                    <CardDescription>Critical emergency response skills</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Basic life support & CPR</p>
+                      <p>• Emergency response protocols</p>
+                      <p>• 4 Days practical training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-orange-600 hover:bg-orange-700">
+                        <Link href="/courses/first-aid-cpr">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-orange-600 text-orange-600 hover:bg-orange-50"
+                        onClick={() => handleBrochureDownload("first-aid-cpr", "First Aid and CPR")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Food Safety Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Food Safety and Hygiene Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-orange-600 text-white">₦80,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Food Safety & Hygiene</CardTitle>
+                    <CardDescription>Safe food handling practices</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• HACCP principles</p>
+                      <p>• Food contamination prevention</p>
+                      <p>• 2-4 Days flexible training</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-orange-600 hover:bg-orange-700">
+                        <Link href="/courses/food-safety">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-orange-600 text-orange-600 hover:bg-orange-50"
+                        onClick={() => handleBrochureDownload("food-safety", "Food Safety & Hygiene")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Caregiver Course */}
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Caregiver Certification Training"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-orange-600 text-white">₦140,000</Badge>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Caregiver Certification</CardTitle>
+                    <CardDescription>Professional compassionate care skills</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm text-gray-600 mb-4">
+                      <p>• Personal care & safety</p>
+                      <p>• Medical assistance basics</p>
+                      <p>• 4-5 Days with practicum</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-orange-600 hover:bg-orange-700">
+                        <Link href="/courses/caregiver">Learn More</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-orange-600 text-orange-600 hover:bg-orange-50"
+                        onClick={() => handleBrochureDownload("caregiver", "Caregiver Certification")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-16">
             <Button
               size="lg"
-              variant="outline"
-              className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transform hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-black px-8 py-3 transform hover:scale-105 transition-all duration-300"
             >
               <Link href="/courses">View All Courses</Link>
             </Button>
@@ -367,8 +976,8 @@ export default function HomePage() {
                   <div className="relative">
                     <Quote className="h-8 w-8 text-blue-100 absolute -top-4 -left-2" />
                     <p className="text-gray-600 relative z-10 pl-4">
-                      &apos;The PMP training was exceptional. The instructors were knowledgeable and the practical approach
-                      helped me pass the exam on my first attempt.&apos;
+                      "The PMP training was exceptional. The instructors were knowledgeable and the practical approach
+                      helped me pass the exam on my first attempt."
                     </p>
                   </div>
                   <Button variant="link" className="mt-4 text-blue-600 p-0">
@@ -403,8 +1012,8 @@ export default function HomePage() {
                   <div className="relative">
                     <Quote className="h-8 w-8 text-red-100 absolute -top-4 -left-2" />
                     <p className="text-gray-600 relative z-10 pl-4">
-                      &apos;Outstanding business analysis training! The course content was comprehensive and immediately
-                      applicable to my work.&apos;
+                      "Outstanding business analysis training! The course content was comprehensive and immediately
+                      applicable to my work."
                     </p>
                   </div>
                   <Button variant="link" className="mt-4 text-red-600 p-0">
@@ -439,8 +1048,8 @@ export default function HomePage() {
                   <div className="relative">
                     <Quote className="h-8 w-8 text-green-100 absolute -top-4 -left-2" />
                     <p className="text-gray-600 relative z-10 pl-4">
-                      &apos;The risk management certification gave me the skills and confidence to advance in my career.
-                      Highly recommended!&apos;
+                      "The risk management certification gave me the skills and confidence to advance in my career.
+                      Highly recommended!"
                     </p>
                   </div>
                   <Button variant="link" className="mt-4 text-green-600 p-0">
@@ -473,7 +1082,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-400">
             <Button
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 transform hover:scale-105 transition-all duration-300"
+              className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 transform hover:scale-105 transition-all duration-300"
             >
               <Link href="/training-schedule" className="flex items-center">
                 <Calendar className="mr-2 h-5 w-5" />
@@ -483,7 +1092,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-black hover:bg-white hover:text-blue-600 px-8 py-3 transform hover:scale-105 transition-all duration-300"
+              className="border-white text-blue-900 hover:bg-white hover:text-blue-600 px-8 py-3 transform hover:scale-105 transition-all duration-300"
             >
               <Link href="/contact">Contact Us</Link>
             </Button>
@@ -496,7 +1105,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-            <p className="text-xl text-gray-600">We&apos;re here to help you achieve your professional goals</p>
+            <p className="text-xl text-gray-600">We're here to help you achieve your professional goals</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
