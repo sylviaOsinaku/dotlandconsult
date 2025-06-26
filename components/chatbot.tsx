@@ -143,7 +143,7 @@ export function Chatbot() {
 
     // Default response
     return {
-      text: "I'd be happy to help you with that! 😊\n\nI can assist you with:\n🎓 **Course Information** - Details about all our programs\n💰 **Pricing & Packages** - Training costs and options\n📅 **Scheduling** - Available dates and booking\n📍 **Locations** - Training venues and formats\n🏢 **Corporate Training** - Team training solutions\n\nWhat would you like to explore?",
+      text: "I'd be happy to help you with that okayz! 😊\n\nI can assist you with:\n🎓 **Course Information** - Details about all our programs\n💰 **Pricing & Packages** - Training costs and options\n📅 **Scheduling** - Available dates and booking\n📍 **Locations** - Training venues and formats\n🏢 **Corporate Training** - Team training solutions\n\nWhat would you like to explore?",
       suggestions: ["Show me courses", "Pricing information", "Contact details"],
     }
   }
