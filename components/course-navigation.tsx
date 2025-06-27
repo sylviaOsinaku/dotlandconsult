@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import CoursesPage from "@/app/courses/page"
+// import CoursesPage from "@/app/courses/page"
 
 interface CourseNavigationProps {
   sections: Array<{
