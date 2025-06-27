@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import CoursesPage from "@/app/courses/page"
 
 interface CourseNavigationProps {
   sections: Array<{
@@ -65,6 +66,7 @@ export function CourseNavigation({ sections = [], currentCourse }: CourseNavigat
       })
     }
   }
+  console.log(currentCourse)
 
   // Don't render if no sections or not visible
   if (!isVisible || !sections || sections.length === 0) return null

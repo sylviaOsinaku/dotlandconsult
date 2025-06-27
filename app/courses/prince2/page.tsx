@@ -1,17 +1,17 @@
 "use client"
 
-import { useState } from "react"
+// import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Clock, Users, Calendar, MapPin, Award, Download, CheckCircle, CreditCard, BookOpen } from "lucide-react"
-import { CourseNavigation } from "@/components/course-navigation"
+
 import { CoursePurchaseModal } from "@/components/course-purchase-modal"
 
 export default function Prince2Course() {
-  const [activeSection, setActiveSection] = useState("overview")
+  // const [activeSection, setActiveSection] = useState("overview")
 
   const courseData = {
     title: "PRINCE2 Foundation & Practitioner",
@@ -106,7 +106,7 @@ export default function Prince2Course() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <CourseNavigation activeSection={activeSection} />
+    
 
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
