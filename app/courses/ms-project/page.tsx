@@ -12,6 +12,12 @@ export const metadata: Metadata = {
     "Plan, schedule, track, and deliver projects efficiently with Microsoft Project. 4-day comprehensive training. ₦180,000",
 }
 
+const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 export default function MSProjectPage() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -298,7 +304,7 @@ export default function MSProjectPage() {
 
         {/* Course Navigation */}
         <div className="mt-12">
-          <CourseNavigation currentCourse="ms-project" />
+          <CourseNavigation currentCourse="ms-project"  sections={sections} />
         </div>
       </div>
     </div>
