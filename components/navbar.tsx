@@ -13,7 +13,6 @@ import {
 import {
   Menu,
   Calendar,
-  // X,
   Home,
   Info,
   GraduationCap,
