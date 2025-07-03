@@ -13,6 +13,12 @@ import Image from "next/image"
 
 export default function RiskManagementCourse() {
   // const [activeSection, setActiveSection] = useState("overview")
+  const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 
   const courseData = {
     title: "Professional Risk Management",
@@ -22,7 +28,7 @@ export default function RiskManagementCourse() {
     mode: "Classroom/Online/Hybrid",
     level: "Professional",
     certification: "Risk Management Certificate",
-    nextDate: "March 10-14, 2025",
+    nextDate: "July 10-14, 2025",
     location: "Lagos, Nigeria / Virtual",
   }
 
@@ -148,7 +154,7 @@ export default function RiskManagementCourse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-white">
-      <CourseNavigation sections={[]} />
+      <CourseNavigation sections={sections} />
 
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}

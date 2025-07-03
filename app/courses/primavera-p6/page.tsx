@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description:
     "Master project planning, scheduling & control with Oracle Primavera P6. 4-day hands-on training with certification. ₦200,000",
 }
+const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 
 export default function PrimaveraP6Page() {
   return (
@@ -316,7 +322,7 @@ export default function PrimaveraP6Page() {
 
         {/* Course Navigation */}
         <div className="mt-12">
-          <CourseNavigation currentCourse="primavera-p6" />
+          <CourseNavigation currentCourse="primavera-p6" sections={sections}/>
         </div>
       </div>
     </div>

@@ -361,14 +361,14 @@ export function Navbar() {
                   <span className="text-blue-400">Dot</span>land
                 </div>
               </Link>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 onClick={closeMenu}
                 className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800"
               >
                 <X className="h-5 w-5" />
-              </Button>
+              </Button> */}
             </div>
 
             {/* Mobile Menu Content */}

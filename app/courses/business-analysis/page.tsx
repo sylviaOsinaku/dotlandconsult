@@ -10,9 +10,17 @@ import { Clock, Users, Calendar, MapPin, Award, Download, CheckCircle, CreditCar
 import { CourseNavigation } from "@/components/course-navigation"
 import { CoursePurchaseModal } from "@/components/course-purchase-modal"
 import Image from "next/image"
+// import busImg from '../../../components/assests/businessanalysis.jpg'
+
 
 export default function BusinessAnalysisCourse() {
   // const [activeSection, setActiveSection] = useState("overview")
+  const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 
   const courseData = {
     title: "Business Analysis Professional (CBAP)",
@@ -22,9 +30,10 @@ export default function BusinessAnalysisCourse() {
     mode: "Online/In-Person",
     level: "Beginner to Intermediate",
     certification: "ECBA, CCBA, CBAP Preparation",
-    nextDate: "March 3-6, 2025",
+    nextDate: "July 8-13, 2025",
     location: "Lagos, Nigeria / Virtual",
   }
+  
 
   const handleDownload = () => {
     const link = document.createElement("a")
@@ -141,7 +150,7 @@ export default function BusinessAnalysisCourse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
-      <CourseNavigation sections={[]} />
+      <CourseNavigation sections={sections} />
 
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}

@@ -13,6 +13,12 @@ import Image from "next/image"
 
 export default function PMPCourse() {
   // const [activeSection, setActiveSection] = useState("overview")
+  const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 
   const courseData = {
     title: "Project Management Professional (PMP)",
@@ -195,7 +201,7 @@ export default function PMPCourse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <CourseNavigation sections={[]} />
+      <CourseNavigation sections={sections} />
 
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}

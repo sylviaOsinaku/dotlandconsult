@@ -347,7 +347,7 @@ export default function DataAnalysisCoursePage() {
                       <Clock className="h-5 w-5 text-blue-600" />
                       <div>
                         <div className="font-medium">Duration</div>
-                        <div className="text-sm text-gray-600">3-4 Days (Customizable)</div>
+                        <div className="text-sm text-gray-600">3-4 Days Customizable</div>
                       </div>
                     </div>
 

@@ -9,6 +9,9 @@ import { Separator } from "@/components/ui/separator"
 import { Clock, Users, Calendar, MapPin, Award, Download, CheckCircle, CreditCard, BookOpen } from "lucide-react"
 
 import { CoursePurchaseModal } from "@/components/course-purchase-modal"
+// import Image from "next/image"
+// import princeImg from '../../../components/assests/prince.jpg'
+
 
 export default function Prince2Course() {
   // const [activeSection, setActiveSection] = useState("overview")
@@ -21,7 +24,7 @@ export default function Prince2Course() {
     mode: "Classroom/Virtual",
     level: "Foundation to Practitioner",
     certification: "PRINCE2 Foundation & Practitioner Certificates",
-    nextDate: "February 17-21, 2025",
+    nextDate: "July 17-21, 2025",
     location: "Lagos, Nigeria / Virtual",
   }
 

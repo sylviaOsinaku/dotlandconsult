@@ -12,7 +12,12 @@ export const metadata: Metadata = {
   description:
     "Master Agile Practices & Elevate Your Career with PMI-ACP® Certification. Comprehensive Agile training. ₦200,000",
 }
-
+const sections = [
+  { id: "description", label: "Description" },
+  { id: "benefits", label: "What You Gain" },
+  { id: "audience", label: "Who Should Attend" },
+  { id: "outline", label: "Course Outline" },
+]
 export default function PMIACPPage() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -341,7 +346,7 @@ export default function PMIACPPage() {
 
         {/* Course Navigation */}
         <div className="mt-12">
-          <CourseNavigation currentCourse="pmi-acp" />
+          <CourseNavigation currentCourse="pmi-acp"sections={sections} />
         </div>
       </div>
     </div>
