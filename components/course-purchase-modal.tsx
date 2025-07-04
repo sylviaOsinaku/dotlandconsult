@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import copy from 'copy-text-to-clipboard';
 import {
   Dialog,
   DialogContent,
@@ -42,8 +43,13 @@ export function CoursePurchaseModal({ courseName, coursePrice, children }: Cours
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  
+
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text)
+    copy(text)
+    console.log("testing copy")
+    console.log(text)
     toast({
       title: "Copied!",
       description: `${label} copied to clipboard`,
@@ -209,6 +215,7 @@ export function CoursePurchaseModal({ courseName, coursePrice, children }: Cours
                         type="button"
                         variant="ghost"
                         size="sm"
+                        
                         onClick={() => copyToClipboard("A.G. Dotland Consulting Ltd.", "Account Name")}
                       >
                         <Copy className="h-4 w-4" />
