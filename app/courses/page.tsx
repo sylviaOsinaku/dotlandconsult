@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Award, Download, Briefcase, TrendingUp, Shield, BookOpen } from "lucide-react"
 import Link from "next/link"
+import { CoursePurchaseModal } from "@/components/course-purchase-modal"
 
 const courseCategories = [
   {

@@ -10,7 +10,7 @@ import { Clock, Users, Calendar, MapPin, Award, Download, CheckCircle, CreditCar
 import { CourseNavigation } from "@/components/course-navigation"
 import { CoursePurchaseModal } from "@/components/course-purchase-modal"
 import Image from "next/image"
-// import busImg from '../../../components/assests/businessanalysis.jpg'
+import busImg from '../../../components/assests/businessanalysis.jpg'
 
 
 export default function BusinessAnalysisCourse() {
@@ -201,7 +201,7 @@ export default function BusinessAnalysisCourse() {
 
                 <div className="hidden md:block">
                   <Image
-                    src="/placeholder.svg?height=300&width=400"
+                   src={busImg}
                     alt="Business Analysis Training"
                     width={400}
                     height={300}

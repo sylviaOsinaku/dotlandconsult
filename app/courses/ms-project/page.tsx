@@ -50,7 +50,7 @@ export default function MSProjectPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600"
+                className="border-white text-blue-800 hover:bg-white hover:text-blue-600"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Brochure

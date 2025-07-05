@@ -54,7 +54,7 @@ export default function PMIACPPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-green-600"
+                className="border-white text-blue-800 hover:bg-white hover:text-green-600"
                 asChild
               >
                 <a href="/brochures/pmi-acp-brochure.pdf" download>

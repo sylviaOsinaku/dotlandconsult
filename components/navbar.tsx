@@ -101,7 +101,7 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <div className="font-bold text-2xl text-blue-600">Dotland</div>
+            <div className="font-bold text-2xl text-blue-600">Dotland Consult</div>
           </Link>
           <NavigationMenu>
             <NavigationMenuList>

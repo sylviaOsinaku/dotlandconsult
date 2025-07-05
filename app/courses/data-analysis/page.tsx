@@ -2,8 +2,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Clock, Users, Award, Download, CheckCircle, Calendar, BookOpen } from "lucide-react"
+import { Clock, Users, Award, Download, CheckCircle, Calendar, BookOpen, CreditCard } from "lucide-react"
 import Link from "next/link"
+import dataImg from '../../../components/assests/DATA ANALYSIS.jpg'
+
+import Image from 'next/image'
+import { CoursePurchaseModal } from "@/components/course-purchase-modal"
+const courseData = {
+    title: "DATA ANALYSIS COURSE ",
+    subtitle: "Globally Recognized PMI Certification",
+    price: 180000,
+    duration: "3-4 Days",
+    mode: "Classroom/Online/Hybrid",
+    level: "Professional",
+    certification: "Data Analysis Certification",
+    nextDate: "August 10-14, 2025",
+    location: "Lagos, Nigeria / Virtual",
+    hours: "30-40 Hours",
+  }
 
 export default function DataAnalysisCoursePage() {
   return (
@@ -21,13 +37,16 @@ export default function DataAnalysisCoursePage() {
                 to become a data-driven professional.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                  <Link href="/training-schedule">Enroll Now</Link>
-                </Button>
+                <CoursePurchaseModal courseName={courseData.title} coursePrice={courseData.price}>
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white">
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      Enroll Now
+                    </Button>
+                  </CoursePurchaseModal>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-600"
+                  className="border-white text-blue-700 hover:bg-white hover:text-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download Brochure
@@ -56,8 +75,8 @@ export default function DataAnalysisCoursePage() {
                     alt="Statistical analysis"
                     className="w-full h-32 object-cover rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                   />
-                  <img
-                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  <Image
+                    src={dataImg}
                     alt="Training session"
                     className="w-full h-32 object-cover rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                   />
@@ -462,7 +481,7 @@ export default function DataAnalysisCoursePage() {
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
               <Link href="/training-schedule">Schedule Training</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button size="lg" variant="outline" className="border-white text-blue-800 hover:bg-white hover:text-blue-600">
               <Link href="/contact">Contact Us</Link>
             </Button>
           </div>

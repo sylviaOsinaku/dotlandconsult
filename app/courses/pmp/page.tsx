@@ -10,6 +10,7 @@ import { Clock, Users, Calendar, MapPin, Award, Download, CheckCircle, CreditCar
 import { CourseNavigation } from "@/components/course-navigation"
 import { CoursePurchaseModal } from "@/components/course-purchase-modal"
 import Image from "next/image"
+import pmp from '../../../components/assests/PMI-ACP.jpg'
 
 export default function PMPCourse() {
   // const [activeSection, setActiveSection] = useState("overview")
@@ -28,7 +29,7 @@ export default function PMPCourse() {
     mode: "Classroom/Online/Hybrid",
     level: "Professional",
     certification: "PMP Certification Preparation",
-    nextDate: "February 10-14, 2025",
+    nextDate: "August 10-14, 2025",
     location: "Lagos, Nigeria / Virtual",
     hours: "30-40 Hours",
   }
@@ -252,7 +253,7 @@ export default function PMPCourse() {
 
                 <div className="hidden md:block">
                   <Image
-                    src="/placeholder.svg?height=300&width=400"
+                    src={pmp}
                     alt="PMP Certification Training"
                     width={400}
                     height={300}

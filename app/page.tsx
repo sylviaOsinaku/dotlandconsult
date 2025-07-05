@@ -5,6 +5,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import dotlnHomePic1 from "../components/assests/homepic1.jpg"
 import dotInHomePic2 from "../components/assests/dotmanager.jpg"
 import dotlandLogo from '../components/assests/DOTLAND LOGO jpg (1)PNG - Obidike Christopher (1).png'
+import busImg from '../components/assests/businessanalysis.jpg'
+import prince2Img from '../components/assests/PRINCE2.jpg'
+import dataImg from '../components/assests/DATA ANALYSIS.jpg'
+import foodImg from '../components/assests/foodsafety.jpg'
+import cprImg from '../components/assests/firstaidandcpr.jpg'
+import primeraImg from '../components/assests/Primavera P6.jpg'
+import pmiImg from '../components/assests/PMI-ACP.jpg'
+
+import careImg from '../components/assests/Caregiver Certification Training.jpg'
+import cusImg from '../components/assests/CustomerRelationship.jpg'
+import logImg from '../components/assests/Logistics.jpg'
+import opeImg from '../components/assests/OPERATIONS AND FACILITY MANAGEMENT.jpg'
+import promanImg from '../components/assests/projectmangement.jpg'
+// import prince1Img from '../components/assests/prince.jpg'
+import riskImg from '../components/assests/riskman.jpg'
+import micImg from '../components/assests/microsofttraining.jpg'
+import scrumImg from '../components/assests/ProfessionalScrum.jpg'
+
 import { Badge } from "@/components/ui/badge"
 import {
   ArrowRight,
@@ -213,8 +231,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* PMP Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={pmiImg}
                       alt="PMP Certification Training"
                       className="w-full h-full object-cover"
                     />
@@ -251,8 +269,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* PRINCE2 Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={prince2Img}
                       alt="PRINCE2 Certification Training"
                       className="w-full h-full object-cover"
                     />
@@ -289,8 +307,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Scrum Master Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={scrumImg}
                       alt="Professional Scrum Master Training"
                       className="w-full h-full object-cover"
                     />
@@ -327,8 +345,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* PMI-ACP Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={pmiImg}
                       alt="PMI-ACP Certification Training"
                       className="w-full h-full object-cover"
                     />
@@ -365,8 +383,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Program Management Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={promanImg}
                       alt="Program Management Training"
                       className="w-full h-full object-cover"
                     />
@@ -403,8 +421,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Primavera P6 Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={primeraImg}
                       alt="Primavera P6 Software Training"
                       className="w-full h-full object-cover"
                     />
@@ -454,8 +472,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Business Analysis Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={busImg}
                       alt="Business Analysis Training"
                       className="w-full h-full object-cover"
                     />
@@ -492,8 +510,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Risk Management Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={riskImg}
                       alt="Professional Risk Management Training"
                       className="w-full h-full object-cover"
                     />
@@ -530,8 +548,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Operations & Facility Management */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={opeImg}
                       alt="Operations and Facility Management"
                       className="w-full h-full object-cover"
                     />
@@ -583,8 +601,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* CRM Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={cusImg}
                       alt="Customer Relationship Management Training"
                       className="w-full h-full object-cover"
                     />
@@ -621,8 +639,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Supply Chain Management */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={logImg}
                       alt="Logistics and Supply Chain Management"
                       className="w-full h-full object-cover"
                     />
@@ -672,8 +690,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Data Analysis Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={dataImg}
                       alt="Data Analysis Training"
                       className="w-full h-full object-cover"
                     />
@@ -710,8 +728,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* MS Project Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={micImg}
                       alt="Microsoft Project Training"
                       className="w-full h-full object-cover"
                     />
@@ -761,8 +779,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* First Aid & CPR Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={cprImg}
                       alt="First Aid and CPR Training"
                       className="w-full h-full object-cover"
                     />
@@ -799,8 +817,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Food Safety Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={foodImg}
                       alt="Food Safety and Hygiene Training"
                       className="w-full h-full object-cover"
                     />
@@ -837,8 +855,8 @@ Visit our website: www.dotlandconsulting.com
                 {/* Caregiver Course */}
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <Image
+                      src={careImg}
                       alt="Caregiver Certification Training"
                       className="w-full h-full object-cover"
                     />
